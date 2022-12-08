@@ -44,6 +44,7 @@ public class Temperature
             highTemp = convertFtoC(highTemp);
             lowTemp = convertFtoC(lowTemp);
         }
+        tempScale = "C";
     }
 
     public void changeToF()
@@ -53,6 +54,7 @@ public class Temperature
             highTemp = convertCtoF(highTemp);
             lowTemp = convertCtoF(lowTemp);
         }
+        tempScale = "F";
     }
 
 
@@ -60,21 +62,9 @@ public class Temperature
 
     private static double roundToNearestTenth(double num)
     {
-        int decimal = (int)((num - (int)(num)) * 100);
-        if (decimal % 10 >= 5)
-        {
-            num = num + 0.1;
-            num = num * 10;
-            num = (int)(num);
-            num = num / 10;
-        }
-        else
-        {
-            decimal = decimal / 10;
-            num = (int)(num) + ((0.1) * decimal);
-        }
-
-        return num;
+        String strDecimal = String.format("%.1f",num);
+        double decimal = Double.parseDouble(strDecimal);
+        return decimal;
     }
 
     // 4. Complete the toString method below (using your static helper method)
